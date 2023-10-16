@@ -1,0 +1,15 @@
+CREATE TABLE cdw_sapp_customer (
+    SSN INT(9) PRIMARY KEY, -- SSN is unique for each customer
+    FIRST_NAME VARCHAR(255) NOT NULL, 
+    MIDDLE_NAME VARCHAR(255),
+    LAST_NAME VARCHAR(255) NOT NULL, 
+    CREDIT_CARD_NO VARCHAR(255) NOT NULL, -- assuming credit card numbers are unique
+    FULL_STREET_ADDRESS VARCHAR(255) NOT NULL,
+    CUST_CITY VARCHAR(255) NOT NULL,
+    CUST_STATE VARCHAR(2) NOT NULL, -- State codes usually have 2 characters
+    CUST_COUNTRY VARCHAR(3) NOT NULL, -- Country codes usually have 3 characters
+    CUST_ZIP INT(5) NOT NULL,
+    CUST_PHONE VARCHAR(10) NOT NULL, 
+    CUST_EMAIL VARCHAR(255) NOT NULL,
+    LAST_UPDATED TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
