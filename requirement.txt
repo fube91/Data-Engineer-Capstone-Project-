@@ -1,0 +1,25 @@
+All the python libraries imported for this project.
+
+import requests
+import pyspark
+import pandas as pd
+import numpy as np
+import mysql.connector as mydbconnection
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pyspark.sql.functions as F
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import udf
+from pyspark.sql.types import StringType
+from pyspark.sql.functions import length
+from pyspark.sql.functions import concat, lit
+from pyspark.sql.functions import substring, upper, col
+from pyspark.sql.functions import initcap
+from pyspark.sql.functions import lower
+import random
+from sqlalchemy import create_engine
+from mysql.connector import Error
+from credentials import mysql_username, mysql_password
+
+
+credentials.py file cotains both mysql_username and mysql_password.

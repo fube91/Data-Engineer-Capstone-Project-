@@ -1,15 +1,53 @@
-CREATE TABLE cdw_sapp_customer (
-    SSN INT(9) PRIMARY KEY, -- SSN is unique for each customer
-    FIRST_NAME VARCHAR(255) NOT NULL, 
-    MIDDLE_NAME VARCHAR(255),
-    LAST_NAME VARCHAR(255) NOT NULL, 
-    CREDIT_CARD_NO VARCHAR(255) NOT NULL, -- assuming credit card numbers are unique
-    FULL_STREET_ADDRESS VARCHAR(255) NOT NULL,
-    CUST_CITY VARCHAR(255) NOT NULL,
-    CUST_STATE VARCHAR(2) NOT NULL, -- State codes usually have 2 characters
-    CUST_COUNTRY VARCHAR(3) NOT NULL, -- Country codes usually have 3 characters
-    CUST_ZIP INT(5) NOT NULL,
-    CUST_PHONE VARCHAR(10) NOT NULL, 
-    CUST_EMAIL VARCHAR(255) NOT NULL,
-    LAST_UPDATED TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+CREATE TABLE IF NOT EXISTS `cdw_sapp_customer` ("
+    "SSN INT PRIMARY KEY,"
+    "FIRST_NAME VARCHAR(55) NOT NULL," 
+    "MIDDLE_NAME VARCHAR(55),"
+    "LAST_NAME VARCHAR(55) NOT NULL," 
+    "CREDIT_CARD_NO VARCHAR(16) NOT NULL," 
+    "FULL_STREET_ADDRESS VARCHAR(255) NOT NULL," 
+    "CUST_CITY VARCHAR(55) NOT NULL,"
+    "CUST_STATE VARCHAR(2) NOT NULL," 
+    "CUST_COUNTRY VARCHAR(55) NOT NULL," 
+    "CUST_ZIP INT NOT NULL,"  
+    "CUST_PHONE VARCHAR(15) ," 
+    "CUST_EMAIL VARCHAR(255) NOT NULL,"  
+    "LAST_UPDATED TIMESTAMP"
+    ")"
+    
+
+CREATE TABLE IF NOT EXISTS `cdw_sapp_credit_card` ("
+    "CUST_CC_NO VARCHAR(16) NOT NULL,"
+    "TIMEID VARCHAR(8) NOT NULL,"  
+    "CUST_SSN VARCHAR(9) NOT NULL,"  
+    "BRANCH_CODE INT NOT NULL,"
+    "TRANSACTION_TYPE VARCHAR(50) NOT NULL,"
+    "TRANSACTION_VALUE DOUBLE NOT NULL,"
+    "TRANSACTION_ID INT NOT NULL PRIMARY KEY,"  
+    "FOREIGN KEY (`BRANCH_CODE`) REFERENCES `cdw_sapp_branch`(`BRANCH_CODE`)" 
+    ")"
+
+CREATE TABLE IF NOT EXISTS `cdw_sapp_branch` ("
+    "BRANCH_CODE INT PRIMARY KEY," 
+    "BRANCH_NAME VARCHAR(55)," 
+    "BRANCH_STREET VARCHAR(55)," 
+    "BRANCH_CITY VARCHAR(55)," 
+    "BRANCH_STATE VARCHAR(55)," 
+    "BRANCH_ZIP INT DEFAULT 999999," 
+    "BRANCH_PHONE VARCHAR(15)," 
+    "LAST_UPDATED TIMESTAMP"
+    ")"
+
+    #Application loan DDL
+
+    "CREATE TABLE IF NOT EXISTS `cdw_sapp_loan_application` ("
+    "Application_ID VARCHAR(10) PRIMARY KEY,"               
+    "Application_Status VARCHAR(2),"               
+    "Credit_History VARCHAR(2),"                   
+    "Dependents VARCHAR(5),"                               
+    "Education VARCHAR(15),"                        
+    "Gender VARCHAR(10),"                           
+    "Income VARCHAR(10),"                         
+    "Married VARCHAR(10),"                          
+    "Property_Area VARCHAR(20),"                   
+    "Self_Employed VARCHAR(5)"                     
+    ")"
